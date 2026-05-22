@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit FAQ</title>
+
+    <style>
+        body{
+            background: #0f172a;
+            color: white;
+            font-family: Arial;
+            padding: 40px;
+        }
+
+        .container{
+            max-width: 700px;
+            margin: auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        input,
+        textarea{
+            width: 100%;
+            padding: 15px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #38bdf8;
+            color: white;
+        }
+
+        button{
+            margin-top: 20px;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #38bdf8;
+            color: white;
+            cursor: pointer;
+        }
+
+        a{
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit FAQ</h1>
+
+        <form method="POST">
+
+            <input type="text" name="question" value="{{ faq.question }}" required>
+
+            <textarea name="answer" rows="8" required>{{ faq.answer }}</textarea>
+
+            <button type="submit">
+                Update FAQ
+            </button>
+        </form>
+
+        <br><br>
+
+        <a href="/admin">
+            Back to Admin
+        </a>
+    </div>
+</body>
+</html>

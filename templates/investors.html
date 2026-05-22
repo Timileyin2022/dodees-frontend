@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodees - Meaningful Connections</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+</head>
+<body>
+    <!--NAVBAR-->
+    <header class="navbar">
+        <div class="logo">Dodees</div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/investors">Investors</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="investor-content">
+        <h2 data-aos="fade-up">Why invest in Dodees</h2>
+        <div class="investor-grid">
+            <div data-aos="fade-up">
+                <h3>Growing Market</h3>
+                <p>
+                    The online dating industry continues to grow globally,
+                    with millions seeking meaningful relationships online.
+                </p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="100">
+                <h3>Video-First Technologies</h3>
+                <p>
+                    Dodees introduces a unique approach by allowing users
+                    to present themselves through video profiles,
+                    creating deeper and more authentic connections.
+                </p>
+            </div>
+
+            <div data-aos="fade-up" data-aos-delay="200">
+                <h3>Global Opportunity</h3>
+                <p>Our platform is designed to scale globally,
+                    bringing together individuals from different cultures
+                    and background seeking real relationships.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="investor-contact">
+        <h2 data-aos="fade-up">Interested in Investing?</h2>
+
+        <p data-aos="fade-up">
+            Contact our investor relations team for partnership Opportunities.
+        </p>
+
+        <a href="/contact" class="investor-btn">Contact Investor Team</a>
+    </section>
+
+    <section class="investors-section">
+        <form class="contact-form" action="/api/investors" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <input type="email" name="email" placeholder="Your Email" required>
+
+            <input type="text" name="company" placeholder="Company Name">
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Dodees</h3>
+                <p>Meaningful connections through video dating.</p>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/investors">Investors</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration:1000,
+            once:true
+        })
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69d1119b22103b1c360eed19/1jlcapihi';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

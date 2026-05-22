@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodees - Meaningful Connections</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+</head>
+<body>
+    <!--NAVBAR-->
+    <header class="navbar">
+        <div class="logo">Dodees</div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/investors">Investors</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="contact-hero">
+        <h1 data-aos="fade-up">Contact Us</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            We would love to hear from you. Send us a message and we will respond soon.
+        </p>
+    </section>
+
+    <section class="contact-section">
+        <form class="contact-form" action="/api/contact" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+
+            <input type="email" name="email" placeholder="Your Email" required>
+
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div>
+                <h3>Dodees</h3>
+                <p>Meaningful connections through video dating.</p>
+            </div>
+
+            <div>
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/investors">Investors</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration:1000,
+            once:true
+        })
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69d1119b22103b1c360eed19/1jlcapihi';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

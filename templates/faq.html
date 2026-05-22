@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodees - Meaningful Connections</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+
+</head>
+<body>
+    <!--NAVBAR-->
+    <header class="navbar">
+        <div class="logo">Dodees</div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/investors">Investors</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="faq-hero">
+        <h1 data-aos="fade-up">Frequently Asked Questions</h1>
+        <p data-aos="fade-up" data-aos-delay="100">
+            Everything you need to know about Dodees.
+        </p>
+    </section>
+
+    <section class="faq-section">
+        <input type="text" id="faq-search" placeholder="Search for a question...." />
+
+        <div class="suggested-searches">
+            <h3>Popular Searches</h3>
+
+            <div id="suggestion-container."></div>
+
+        <div id="faq-container"></div>
+    </section>
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>Dodees</h2>
+                <p>Meaningful Connections through modern video-based matchmaking.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/investors">Investors</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/privacy">privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>2026 Dodees Technologies Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration:1000,
+            once:true
+        })
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69d1119b22103b1c360eed19/1jlcapihi';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!--FAQ DATABASE-->
+    <script>
+        // store FAQs from Flask
+        let allFaqs = [];
+        
+        // load FAQs from Flask
+        fetch("/faqs")
+        .then(response => response.json())
+        .then(data => {
+            console.log("FAQs loaded:", data);
+            allFaqs = data
+            displayFaqs(allFaqs)
+
+        })
+
+        // Display FAQs
+        function displayFaqs(faqs){
+
+            const container = document.getElementById("faq-container");
+            
+            if (faqs.length === 0) {
+                container.innerHTML = `
+                    <p class="no-results">
+                        No FAQ found
+                    </p>
+                `;
+                return;
+            }
+
+            container.innerHTML = faqs.map(faq => `
+                <div class="faq-item">
+
+                    <div class="faq-question">
+                        ${faq.question}
+                    </div>
+
+                    <div class="faq-answer">
+                        <p>${faq.answer}</p>
+
+                        <div class="faq-feedback">
+
+                            <button onclick="sendFeedback(${faq.id}, 'helpful')">
+                                Helpful (${faq.helpful})
+                            </button>
+
+                            <button onclick="sendFeedback(${faq.id}, 'not_helpful')">
+                                Not Helpful (${faq.not_helpful})
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+
+            document.querySelectorAll(".faq-question")
+            .forEach(question => {
+
+                question.addEventListener("click", () => {
+
+                    const answer =
+                        question.nextElementSibling;
+
+                    answer.classList.toggle("active");
+                });
+            });
+        }
+    
+
+        //Filter function
+        function filterFaqs(searchTerm) {
+            const filtered = allFaqs.filter(faq =>
+                faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                faq.answer.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+
+            displayFaqs(filtered);
+        }
+
+        let timeout;
+
+        // Main Search Event
+        document.getElementById("faq-search").addEventListener("input", function(){
+
+            const value = this.value;
+
+            console.log("Searching:", value)
+            //Filter instantly on frontend
+            filterFaqs(value);
+
+            //log to backend with delay
+            clearTimeout(timeout);
+
+            //New timer
+            timeout = setTimeout(() => {
+                if (value.length > 2) {
+                    console.log("Sending search:", value)
+                    fetch("/log-search", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({query: value})
+                    })
+
+                    .then(res => res.json())
+
+                    .then(data => {
+                        console.log(data);
+                    });
+                }
+            }, 500);
+        });
+
+        //Feedback function
+        function sendFeedback(id, action){
+            console.log("Clicked:", id, action)
+            fetch(`/faq-feedback/${id}`, {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body: JSON.stringify({
+                    action: action
+                })
+            })
+
+            .then(res => res.json())
+
+            .then(data => {
+                console.log(data);
+
+                //reload FAQs
+                fetch("/faqs")
+                .then(res => res.json())
+                .then(data => {
+                    allFaqs = data;
+                    displayFaqs(allFaqs);
+                });
+            })
+        }
+
+        // Load Suggestions
+        fetch("/faq_suggestions")
+
+        .then(res => res.json())
+        .then(data => {
+            console.log("Suggestions:", data);
+
+            const container = document.getElementById("suggestion-container");
+
+            container.innerHTML = data.map(item => `
+                <button class="suggestion-btn" onclick="useSuggestion('${item.question}')">
+                    
+                    ${item.question}
+                </button>
+            `).join("");
+        });
+        
+        // use suggestion
+        function useSuggestion(text){
+
+            const searchInput = document.getElementById("faq-search");
+
+            searchInput.value = text;
+
+            filterFaqs(text);
+        }
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

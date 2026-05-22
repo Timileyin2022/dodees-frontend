@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodees - Meaningful Connections</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+</head>
+<body>
+    <!--SCROLL PROGRESS-->
+    <div class="scroll-progress"></div>
+    <!--NAVBAR-->
+    <header class="navbar">
+        <div class="logo">Dodees</div>
+
+        <div class="menu-toggle">
+            
+        </div>
+
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="/privacy">Privacy</a></li>
+                <li><a href="/terms">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--HERO SECTION NEW-->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Real Connections Through Video</h1>
+                <p>Dodees helps people connect authentically through short video introductions instead of endless swiping.</p>
+            </div>
+            <div class="hero-buttons">
+                <a href="#how-it-works" class="btn-primary">Join Waitlist</a>
+                <a href="/about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='Find your perfect match today.png')}}" alt="Dodees App Preview">
+        </div>
+    </section>
+
+
+    <!--HOW IT WORKS-->
+    <section id="features" class="features">
+        <h2>How Dodees Works</h2>
+
+        <div class="steps" data-aos="zoom-in">
+            <div class="step">
+                <h3>1. Created Your Profile</h3>
+                <p>Sign up and create a profile that reflects your personality and interests.</p>
+            </div>
+            <div class="step" data-aos="zoom-in">
+                <h3>2. Upload a Video Intro</h3>
+                <p>Share a short video introduction so others can see the real you.</p>
+            </div>
+            <div class="step" data-aos="zoom-in">
+                <h3>3. Start Matching</h3>
+                <p>Discover meaningful Connections with people who share your values.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Video Profile-->
+
+    <section class="video-profiles">
+        <h2 data-aos="fade-up">Real people. Real Connections</h2>
+
+        <div class="video-container">
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                <video controls poster="{{ url_for('static', filename='IMG_0014.JPG')}}">
+                    <source src="{{ url_for('static', filename='NHOS5263.MP4')}}" type="video/mp4">
+                </video>
+                <h3>Makafa, 27</h3>
+                <p>Loves travels and meaningful conversations.</p>
+            </div>
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                <video controls poster="{{ url_for('static', filename='IMG_0014.JPG')}}">
+                    <source src="{{ url_for('static', filename='NHOS5263.MP4')}}" type="video/mp4">
+                </video>
+                <h3>Timileyin, 26</h3>
+                <p>Loves business and meaningful conversations.</p>
+            </div>
+            <div class="video-card" data-aos="fade-up" data-aos-delay="100">
+                <video controls poster="{{ url_for('static', filename='IMG_0014.JPG')}}">
+                    <source src="{{ url_for('static', filename='NHOS5263.MP4')}}" type="video/mp4">
+                </video>
+                <h3>Chisom, 24</h3>
+                <p>Loves money and meaningful conversations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section" data-aos="fade-up">
+        <h2>Connecting People Around the World</h2>
+        <div class="stats-container">
+            <div class="stat">
+                <h3 class="counter" data-target="5000">0</h3>
+                <p>Users Joined</p>
+            </div>
+
+            <div class="stat">
+                <h3 class="counter" data-target="1200">0</h3>
+                <p>Matchs Created</p>
+            </div>
+
+            <div class="stat">
+                <h3 class="counter" data-target="85">0</h3>
+                <p>Success Rate %</p>
+            </div>
+
+            <div class="stat">
+                <h3 class="counter" data-target="20">0</h3>
+                <p>Countries</p>
+            </div>
+        </div>
+    </section>
+
+    <!--WHY CHOOSE DODEES-->
+    <section id="how-it-works" class="how-it-works">
+        <h2>Why Choose Dodees</h2>
+
+            <div class="feature-container">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Video Profiles</h3>
+                    <p>Show your real personality withshort video introduction instead of just photos.</p>
+
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Smart Matching</h3>
+                    <p>Our system connect you with people who share your interests and goals.</p>
+
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Safe Community</h3>
+                    <p>Dodees promotes a respectful and secure environment for meaningful relationships.</p>
+
+                </div>
+
+            </div>
+    </section>
+    <!--WAITLIST SECTION-->
+
+    <section class="waitlist" data-aos="fade-up">
+        <h2>Be Amoung the First to Experience Dodees</h2>
+        <p>Join our early access list and get notified when the app launches</p>
+        <form class="waitlist-form" action="/api/waitlist" method="POST">
+            <input type="text" name="name" placeholder="Enter your Name" required>
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <button type="submit">Join Waitlist</button>
+        </form>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials">
+        <h2>What People Are Saying</h2>
+
+        <div class="testimonial-container">
+
+            <div class="testimonial-card">
+                <p>Dodees helped me meet genuine people through video. It feels more real than other dating apps.</p>
+                <h4>- Makafa, 28</h4>
+            </div>
+
+            
+            <div class="testimonial-card">
+                <p>Dodees helped me meet genuine people through video. It feels more real than other dating apps.</p>
+                <h4>- Timileyin, 28</h4>
+            </div>
+
+            
+            <div class="testimonial-card">
+                <p>Dodees helped me meet genuine people through video. It feels more real than other dating apps.</p>
+                <h4>- Chisom, 28</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOWNLOAD APP SECTION-->
+     <section id="download" class="download-section">
+        <h2>Download the Dodees App</h2>
+        <p>Download the app and start connecting through real video profiles.</p>
+
+        <div class="download-buttons">
+
+            <a id="appstore-btn" href="https://www.apple.com/app-store/" target="_blank">
+                <img src="{{ url_for('static', filename='Find your match at Apple Store.png') }}" alt="Download on App Store">
+            </a>
+
+            <a id="playstore-btn" href="https://play.google.com/store" target="_blank">
+                <img src="{{ url_for('static', filename='Google Play dating app promotion.png') }}" alt="Get it on Google Play">
+            </a>
+        </div>
+     </section>
+
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>Dodees</h2>
+                <p>Meaningful Connections through modern video-based matchmaking.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/investors">Investors</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/privacy">privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="/payment_terms">Terms of Service</a></li>
+                    <li><a href="/guidelines">Terms of Service</a></li>
+                    <li><a href="/ai_features">Terms of Service</a></li>
+                    <li><a href="/safety">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Social</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+            </div>
+
+        </div>
+
+        <div class="footer-copy">
+            <p>@ 2026 Dodees Technologies Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration:1000,
+            once:true
+        })
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69d1119b22103b1c360eed19/1jlcapihi';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <script>
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".navbar ul li a");
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if(pageYOffset >= sectionTop -200){
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+
+                if(link.getAttribute("href") === "#" + current){
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLink = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLink.classList.toggle("active");
+        });
+    </script>
+    <script>
+        window.addEventListener("scroll", () => {
+            let scrollTop = document.documentElement.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight -document.documentElement.clientHeight;
+
+            let progress = (scrollTop / scrollHeight) * 100;
+
+            document.querySelector(".scroll-progress").style.width = progress + "%";
+        });
+    </script>
+
+    <script>
+        function detectDevice(){
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            const appStoreBtn = document.getElementById("appstore-btn");
+            const playStoreBtn = document.getElementById("playstore-btn");
+
+            /* iOS Devices */
+            if (/ipad|iphone|ipod/.test(userAgent) && !window.MSStream){
+                playStoreBtn.style.display = "none";
+            }
+
+            /* Andriod Device */
+            else if (/andriod/i.test(userAgent)){
+                appStoreBtn.style.display = "none";
+            }
+
+            /* Desktop (show both) */
+            else{
+                appStoreBtn.style.display = "inline-block";
+                playStoreBtn.style.display = "inline-block"
+            }
+        }
+
+        detectDevice();
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
