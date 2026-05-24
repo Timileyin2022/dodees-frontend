@@ -714,6 +714,17 @@ h2{
 }
 
 /* LEGAL PAGE STYLING */
+.page-header-guidelines{
+    background: #C13584;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.page-header-guidelines h1{
+    font-size: 40px;
+}
+
 .page-header{
     background: #C13584;
     color: white;
