@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, jsonify, redirect, session, R
 import csv
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import func
+from io import StringIO
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -285,6 +286,43 @@ def log_search():
 
     return jsonify({"message": "Search logged"})
 
+#____________DOWNLOAD WAITLIST__________
+@app.route("/download_waitlist")
+def download_waitlist():
+
+    output = StringIO()
+
+    writer = csv.writer(output)
+
+    # HEADER
+    writer.writerow([
+        "Name",
+        "Email",
+        "Phone Number"
+    ])
+
+    waitlist = Waitlist.query.all()
+
+    for user in waitlist:
+        writer.writerow([
+            user.name,
+            user.email,
+            user.phone
+        ])
+
+    output.seek(0)
+
+    return Response(
+        output,
+        mimetype="text/csv",
+        headers={
+            "Content-Disposition":
+            "attachment;filename=waitlist.csv"
+        }
+    )
+
+
+#____________ADMIN PAGE____________
 @app.route("/admin")
 def admin():
 
