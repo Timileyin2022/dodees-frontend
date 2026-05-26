@@ -17,11 +17,12 @@
     <header class="navbar">
         <div class="logo">Dodees</div>
 
-        <div class="menu-toggle">
-            
+        <!-- HAMBURGER -->
+        <div class="menu-toggle" id="menu-toggle">
+            &#9776;
         </div>
 
-        <nav>
+        <nav id="navbar">
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="#features">Features</a></li>
@@ -30,6 +31,8 @@
                 <li><a href="#download">Download</a></li>
                 <li><a href="/privacy">Privacy</a></li>
                 <li><a href="/terms">Terms</a></li>
+                <li><a href="/safety">Safety</a></li>
+                <li><a href="/guidelines">Guidelines</a></li>
             </ul>
         </nav>
     </header>
@@ -297,11 +300,11 @@
         });
     </script>
     <script>
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navLink = document.querySelector(".nav-links");
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLink = document.getElementById("navbar");
 
         menuToggle.addEventListener("click", () => {
-            navLink.classList.toggle("active");
+            navbar.classList.toggle("active");
         });
     </script>
     <script>

@@ -325,6 +325,20 @@ body{
 /*Mobile Responsive Design*/
 @media (max-width: 768px) {
 
+    #navbar{
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+    }
+
+    #navbar.active{
+        display: block;
+    }
+
     .nav-links{
         display: none;
         flex-direction: column;
