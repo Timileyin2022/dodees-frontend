@@ -111,7 +111,7 @@ def export_waitlist():
         data.append("ID,Name,Email,Phone\n")
         for user in users:
             data.append(
-                f"{userid}, {user.name}, {user.email}, {user.phone}\n"
+                f"{user.id}, {user.name}, {user.email}, {user.phone}\n"
             )
         return "".join(data)
     return Response(generate(), mimetype="text/csv",
