@@ -302,6 +302,12 @@
         menuToggle.addEventListener("click", () => {
             navbar.classList.toggle("active");
         });
+
+        document.querySelectorAll(".navbar a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLink.classList.remove("active");
+            });
+        });
     </script>
     <script>
         window.addEventListener("scroll", () => {
